@@ -1,14 +1,18 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row justify-content-center">
-    <div class="col-sm-12">
+    <div class="col-sm-8">
         <?php if(session()->get('success')): ?>
             <div class="alert alert-success">
                 <?php echo e(session()->get('success')); ?>  
             </div>
+        <?php elseif(session()->get('warning')): ?>
+            <div class="alert alert-warning">
+                <?php echo e(session()->get('warning')); ?>  
+            </div>
         <?php endif; ?>
     </div>
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Contatos</div>
                 <div class="card-body">

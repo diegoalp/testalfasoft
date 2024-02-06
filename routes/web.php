@@ -17,14 +17,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Auth::routes();
-
-Route::get('/', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.home');
-
-// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('contact.home');
+Route::get('/contacts/{id}',[App\Http\Controllers\HomeController::class, 'showContact'])->name('contact.show');
 
 Auth::routes();
 
-Route::get('/contato/novo', [App\Http\Controllers\HomeController::class, 'newContact'])->name('contact.new');
+Route::get('/contato/novo', [App\Http\Controllers\HomeController::class, 'newContact'])->name('contact.new')->middleware(['auth']);
 
-Route::resource('contacts', App\Http\Controllers\ContactController::class);
+Route::resource('contacts', App\Http\Controllers\ContactController::class)->middleware(['auth']);

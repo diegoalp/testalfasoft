@@ -3,14 +3,18 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-    <div class="col-sm-12">
+    <div class="col-sm-8">
         @if(session()->get('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}  
             </div>
+        @elseif(session()->get('warning'))
+            <div class="alert alert-warning">
+                {{ session()->get('warning') }}  
+            </div>
         @endif
     </div>
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Contatos</div>
                 <div class="card-body">

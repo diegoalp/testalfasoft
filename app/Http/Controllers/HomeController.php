@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,7 +23,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $contacts = \App\Models\Contact::all();
+        return view('home', compact('contacts'));
+    }
+
+    public function showContact($id)
+    {
+        $contact = \App\Models\Contact::find($id);
+        if($contact){
+            return view('detail', compact('contact'));
+        }
+
+        return redirect()->route('contact.home')->with('warning','Contato não encontrado!');
     }
 
     public function newContact(){

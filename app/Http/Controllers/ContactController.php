@@ -41,12 +41,6 @@ class ContactController extends Controller
         return redirect()->route('contact.home')->with('success','Contato adicionado com sucesso!');
     }
 
-    public function show($id)
-    {
-        $contact = Contact::find($id);
-        return view('detail', compact('contact'));
-    }
-
     public function edit($id)
     {
         $contact = Contact::find($id);
